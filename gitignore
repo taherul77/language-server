@@ -5,7 +5,7 @@
 ### Node
 
 # Logs
-
+.node_modules
 logs
 _.log
 npm-debug.log_
