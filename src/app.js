@@ -5,7 +5,6 @@ import cors from "cors";
 import router from "./routes/index.js";
 import globalErrorHandler from "./middlewares/globalErrorHandler.js";
 
-
 const app = express();
 
 app.use(express.json());
@@ -16,9 +15,20 @@ app.use(morgan("dev"));
 
 app.use("/api/v1", router);
 
+// Handle root URL (/)
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the API",
+  });
+});
+
+// Optionally handle /favicon.ico
+app.get("/favicon.ico", (req, res) => res.status(204)); // Respond with no content
+
 app.use(globalErrorHandler);
 
-// handle not found routes
+// Handle not found routes
 app.use((req, res, next) => {
   res.status(404).json({
     success: false,
@@ -32,4 +42,5 @@ app.use((req, res, next) => {
   });
   next();
 });
+
 export default app;
