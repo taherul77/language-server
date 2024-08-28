@@ -35,7 +35,7 @@ const seminarSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "Seminar author is required"],
+      required: [true, "Author is required"],
     },
   },
   {
