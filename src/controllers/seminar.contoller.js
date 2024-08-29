@@ -52,8 +52,9 @@ const createSeminar = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 201,
     message: "Seminar created successfully",
-    result : seminar,
+    result: seminar,  // Keep using 'result' as before
   });
+  
 });
 const seminarController = {
   createSeminar,

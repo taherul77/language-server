@@ -15,7 +15,7 @@ const getMe = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     message: "User retrieved successfully",
-    data: user,
+    result: user,
   });
 });
 
