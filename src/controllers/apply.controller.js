@@ -9,7 +9,11 @@ const createApply = catchAsync(async (req, res) => {
   if (!name || !email || !message || !phoneNumber) {
     throw new ApiError(400, "Please provide all required fields");
   }
+  const isExistingUser = await Apply.findOne({ email });
 
+  if (isExistingUser) {
+    throw new ApiError(409, "Email already exists");
+  }
   const apply = await Apply.create({
     name,
     email,

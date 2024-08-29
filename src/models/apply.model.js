@@ -11,6 +11,7 @@ const applySchema = new mongoose.Schema(
     email: {
       type: mongoose.SchemaTypes.Email,
       required: [true, "Email is required"],
+      unique: true,
     },
     phoneNumber: {
       type: mongoose.SchemaTypes.Phone,
