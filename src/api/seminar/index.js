@@ -1,11 +1,22 @@
 import { Router } from "express";
-import seminarController from "../../controllers/seminar.contoller.js";
+
 import authGuard from "../../middlewares/authGuard.js";
- import multer from "multer";
-const router= Router();
+import multer from "multer";
+import seminarController from "../../controllers/seminar.contoller.js";
 
-const upload = multer({dest : "uploads/"})
-// router.route("/").post(" seminar comming soon");
-router.route("/").post( authGuard(), upload.single("image"),seminarController.createSeminar);
+const router = Router();
+const upload = multer({ dest: "uploads/" });
 
-export default router
+router.post(
+  "/",
+  authGuard("ADMIN"),
+  upload.single("image"),
+  seminarController.createSeminar
+);
+router.get("/",  seminarController.getAllSeminars);
+router.get("/:id", seminarController.getSingleSeminar);
+router.patch("/:id", authGuard("ADMIN"), upload.single("image"), seminarController.updateSeminar);
+
+router.delete("/:id", authGuard("ADMIN"), seminarController.deleteSeminar);
+
+export default router;
