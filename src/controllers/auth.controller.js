@@ -6,6 +6,7 @@ import catchAsync from "../utils/catchAsync.js";
 import User from "../models/user.model.js";
 import sendResponse from "../utils/sendResponse.js";
 
+
 const createUser = catchAsync(async (req, res) => {
   let { first_name, last_name, email, password } = req.body;
 
@@ -44,7 +45,7 @@ const createUser = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 201,
     message: "User created successfully",
-    data: {
+    result: {
       access: token,
     },
   });
@@ -85,7 +86,7 @@ const loginUser = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     message: "User logged in successfully",
-    data: {
+    result: {
       access: token,
     },
   });

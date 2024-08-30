@@ -16,7 +16,5 @@ router.post(
 router.get("/",  seminarController.getAllSeminars);
 router.get("/:id", seminarController.getSingleSeminar);
 router.patch("/:id", authGuard("ADMIN"), upload.single("image"), seminarController.updateSeminar);
-
 router.delete("/:id", authGuard("ADMIN"), seminarController.deleteSeminar);
-
 export default router;
