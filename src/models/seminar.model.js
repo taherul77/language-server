@@ -14,9 +14,9 @@ const seminarSchema = new mongoose.Schema(
       type: Date,
       required: [true, "Date is required"],
     },
-    vanue: {
+    venue: {
       type: String,
-      required: [true, "Vanue is required"],
+      required: [true, "Venue is required"],
     },
     contact: {
       type: String,

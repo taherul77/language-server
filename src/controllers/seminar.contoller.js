@@ -10,13 +10,13 @@ const createSeminar = catchAsync(async (req, res) => {
   const file = req.file;
   const user = req.user;
 
-  const { title, content, date, vanue, contact } = req.body;
+  const { title, content, date, venue, contact } = req.body;
 
   if (!user) {
     throw new ApiError(401, "User authentication failed");
   }
 
-  if (!title || !content || !date || !vanue || !contact) {
+  if (!title || !content || !date || !venue || !contact) {
     throw new ApiError(400, "Please provide all required fields");
   }
 
@@ -26,7 +26,7 @@ const createSeminar = catchAsync(async (req, res) => {
     title,
     content,
     date: parsedDate,
-    vanue,
+    venue,
     contact,
     author: user.id,
   });
@@ -87,10 +87,10 @@ const getSingleSeminar = catchAsync(async (req, res) => {
 // Update Single Seminar
 const updateSeminar = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const { title, content, date, vanue, contact } = req.body;
+  const { title, content, date, venue, contact } = req.body;
   const file = req.file;
 
-  if (!title || !content || !date || !vanue || !contact) {
+  if (!title || !content || !date || !venue || !contact) {
     throw new ApiError(400, "Please provide all required fields");
   }
 
@@ -105,7 +105,7 @@ const updateSeminar = catchAsync(async (req, res) => {
   seminar.title = title;
   seminar.content = content;
   seminar.date = parsedDate;
-  seminar.vanue = vanue;
+  seminar.venue = venue;
   seminar.contact = contact;
 
   if (file) {
